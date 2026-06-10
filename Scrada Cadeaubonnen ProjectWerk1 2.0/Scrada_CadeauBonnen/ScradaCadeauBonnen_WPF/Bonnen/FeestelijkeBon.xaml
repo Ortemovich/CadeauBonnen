@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="ScradaCadeauBonnen_WPF.Bonnen.FeestelijkeBon"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ScradaCadeauBonnen_WPF.Bonnen"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <Grid>
+        <Border CornerRadius="12" BorderThickness="3" Margin="5">
+            <Border.BorderBrush>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#C92639" Offset="0.0"/>
+                    <GradientStop Color="#DE4848" Offset="0.5"/>
+                    <GradientStop Color="#C92639" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#F7E9E7" Offset="0.0"/>
+                    <GradientStop Color="#FFFFFF" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Margin="15,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    
+
+                    <TextBlock Grid.Column="1" Text="Scrada Cadeaubon" FontFamily="Segoe Script" FontSize="22" 
+                               Foreground="#C92639" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    
+                </Grid>
+
+                <Grid Grid.Row="1" Margin="0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    
+
+                    <Border Grid.Column="1" Background="#C92639" CornerRadius="8" Padding="20,15" Margin="0,0,10,0">
+                        <StackPanel>
+                            <TextBlock Text="{Binding AmountDisplay}" FontSize="28" FontWeight="Bold" Foreground="White" 
+                                       FontFamily="Segoe UI" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{Binding BonCode}" FontSize="14" Foreground="White" Margin="0,5,0,0"
+                                       FontFamily="Consolas" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Border Grid.Row="2" BorderThickness="0,1,0,0" BorderBrush="#DE4848" Padding="0,8,0,0">
+                    <Grid>
+                        <TextBlock Text="{Binding ValidUntilDisplay}" FontWeight="SemiBold" FontFamily="Segoe UI" 
+                                   Foreground="#DE4848" HorizontalAlignment="Center" FontSize="14"/>
+
+                        
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

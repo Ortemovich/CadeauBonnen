@@ -1,0 +1,75 @@
+﻿<Window x:Class="ScradaCadeauBonnen_WPF.Cadeaubonnen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScradaCadeauBonnen_WPF" 
+        xmlns:local1="clr-namespace:ScradaCadeauBonnen_WPF.Bonnen"
+        mc:Ignorable="d"
+        Title="Cadeaubonnen" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <local:CadeaubonnenViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+
+        <DataTemplate x:Key="FancyBonTemplate">
+            <local1:FancyBon />
+        </DataTemplate>
+        <DataTemplate x:Key="ModerneBonTemplate">
+            <local1:ModerneBon />
+        </DataTemplate>
+        <DataTemplate x:Key="FeestelijkeBonTemplate">
+            <local1:FeestelijkeBon />
+        </DataTemplate>
+
+        <!-- Template Selector -->
+        <local1:BonThemaSelector x:Key="BonSelector"
+                   FancyTemplate="{StaticResource FancyBonTemplate}"
+                   ModerneTemplate="{StaticResource ModerneBonTemplate}"
+                   FeestelijkeTemplate="{StaticResource FeestelijkeBonTemplate}" />
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Scrada" 
+               FontSize="24" FontWeight="Bold" Margin="0,0,0,15"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Jouw Cadeaubonnen" 
+               FontWeight="SemiBold" Margin="0,0,0,10"/>
+
+
+        <Border Grid.Row="2" Grid.Column="0" Background="#F5F5F5" CornerRadius="5" Margin="0,0,10,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl
+            ItemsSource="{Binding Cadeaubonnen}"
+            ItemTemplateSelector="{StaticResource BonSelector}" 
+            ScrollViewer.CanContentScroll="False"/>
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" VerticalAlignment="Center">
+            <Label Content="Nieuwe cadeaubon" FontWeight="SemiBold" Margin="0,0,0,15"/>
+            <Label Content="Bedrag" FontSize="12" Foreground="Gray" Padding="0" Margin="0,0,0,2"/>
+            <TextBox  Text="{Binding Bedrag, UpdateSourceTrigger=PropertyChanged}" 
+                     Padding="5" Margin="0,0,0,10"/>
+            <Label Content="Bedrag" FontSize="12" Foreground="Gray" Padding="0" Margin="0,0,0,2"/>
+            <TextBox Text="{Binding Reden, UpdateSourceTrigger=PropertyChanged}" 
+                     Padding="5" Margin="0,0,0,20"/>
+            <Button Content="Gebruik" Click="GebruikButton_Click" Height="35" 
+                    Background="#4CAF50" />
+        </StackPanel>
+    </Grid>
+</Window>

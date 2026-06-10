@@ -1,0 +1,52 @@
+﻿<Window x:Class="ScradaCadeauBonnen_WPF.Bevestiging"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScradaCadeauBonnen_WPF"
+        mc:Ignorable="d"
+        Title="Bevestiging" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <!--<Window.DataContext>
+        <local:CadeaubonnenViewModel />
+    </Window.DataContext>-->
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,15">
+            <Label Content="Scrada" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left"/>
+            <Label Content="Info Bestelling" FontSize="18" FontWeight="Medium" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <Border Grid.Row="2" Background="AliceBlue" CornerRadius="5" Padding="10">
+            <ListBox Name="InfoBestelling" Background="Transparent" BorderThickness="0" ItemsSource="{Binding BestellingBonnen}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1.2*" />
+                                <ColumnDefinition Width="1.2*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding BonCode}" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="{Binding Amount, StringFormat=€{0:F2}}" VerticalAlignment="Center" Margin="5" Grid.Column="1"/>
+                            <TextBlock Text="{Binding ValidUntil, StringFormat=dd-MM-yyyy}" VerticalAlignment="Center" Margin="5" Grid.Column="2"/>
+                            <Button Content="❌" Click="RemoveItem_Click" Tag="{Binding}" 
+                        Width="24" Height="24" FontSize="10" Margin="5" Grid.Column="3"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+        </Border>
+
+        <Button Grid.Row="3" Content="Bevestig" Click="Bevestig_Click" 
+                Height="40" Margin="0,20,0,0" Background="#4CAF50" Foreground="White"/>
+    </Grid>
+</Window>

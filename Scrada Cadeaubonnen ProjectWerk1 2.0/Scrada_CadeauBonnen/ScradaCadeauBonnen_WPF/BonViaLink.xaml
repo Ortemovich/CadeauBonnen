@@ -1,0 +1,22 @@
+﻿<Window x:Class="ScradaCadeauBonnen_WPF.BonViaLink"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ScradaCadeauBonnen_WPF"
+        mc:Ignorable="d"
+        Title="BonViaLink" Height="450" Width="800">
+    <Grid Margin="15">
+        <StackPanel>
+            <TextBlock Text="Bekijk jouw cadeaubon" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
+            <Grid Margin="20">
+                <StackPanel>
+                    <TextBlock x:Name="txtCode" FontSize="16" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="txtBedrag" FontSize="16" Margin="0,0,0,10"/>
+                    <TextBlock x:Name="txtGeldigTot" FontSize="16" Margin="0,0,0,10"/>
+                    <ContentControl x:Name="ThemaPreview" Height="200" Width="350"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

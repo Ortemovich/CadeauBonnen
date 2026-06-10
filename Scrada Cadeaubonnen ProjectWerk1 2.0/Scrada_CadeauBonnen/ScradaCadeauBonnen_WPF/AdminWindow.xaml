@@ -1,0 +1,45 @@
+﻿<Window x:Class="ScradaCadeauBonnen_WPF.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Admin Paneel" Height="600" Width="1000"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="20">
+        <TabControl>
+            <!-- Gebruikers Tab -->
+            <TabItem Header="Gebruikers">
+                <DataGrid x:Name="dgUsers" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" />
+                        <DataGridTextColumn Header="Registratie" Binding="{Binding AanmaakDatum}" />
+                        <DataGridTextColumn Header="Aantal Bons" Binding="{Binding AantalBonnen}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!-- Cadeaubonnen Tab -->
+            <TabItem Header="Cadeaubonnen">
+                <DataGrid x:Name="dgBonnen" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Bonnummer" Binding="{Binding CadeaubonCode}" />
+                        <DataGridTextColumn Header="Waarde" Binding="{Binding Bedrag}" />
+                        <DataGridTextColumn Header="Saldo" Binding="{Binding Saldo}" />
+                        <DataGridTextColumn Header="Geldig tot" Binding="{Binding VervalDatum}" />
+                        <DataGridTextColumn Header="Thema" Binding="{Binding ThemaNaam}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!-- Transacties Tab -->
+            <TabItem Header="Transacties">
+                <DataGrid x:Name="dgTransacties" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Tijdstip" Binding="{Binding Datum}" />
+                        <DataGridTextColumn Header="Gebruiker" Binding="{Binding GebruikerEmail}" />
+                        <DataGridTextColumn Header="Bonnummer" Binding="{Binding CadeaubonCode}" />
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

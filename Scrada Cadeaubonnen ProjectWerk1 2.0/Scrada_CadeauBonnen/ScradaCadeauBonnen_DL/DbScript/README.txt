@@ -1,0 +1,1 @@
+﻿De connectionstrings voor de databank zijn de vinden op lijn 15 van cadeaubonbeheerder en in de appsettings.json
